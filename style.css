@@ -1,0 +1,12 @@
+a{
+    text-decoration: none;
+    color: black;
+}
+button{
+    padding: 5px;
+    margin: 20px;
+    width: 90px;
+    border-radius: 15px;
+    border: 0px;
+    background-color: rgba(128, 128, 128, 0.351);
+}
