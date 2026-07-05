@@ -47,6 +47,53 @@ console.log(marks[3]);
 console.log(marks.length);
 
 
+// Functions
+
+function firstFunction(msg){
+    console.log(msg)
+}
+firstFunction("hello function ");
+
+function countVowel(msg){
+    let count = 0;
+    for(const char of msg){
+        if (char === "a"||char==="e"||char==="i"||char==="o"||char==="u"){
+            count++;
+        }
+    }
+    console.log(count);
+}
+
+countVowel("aiub");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
