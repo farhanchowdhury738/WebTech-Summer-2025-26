@@ -39,3 +39,16 @@ for(let i=1; i<=5; i++){
     console.log("Hello "+i);
 }
  
+
+let marks = [40,49,56,76,87,87,94];
+
+console.log(marks);
+console.log(marks[3]);
+console.log(marks.length);
+
+
+
+
+
+
+
