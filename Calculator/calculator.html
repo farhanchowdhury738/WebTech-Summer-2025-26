@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Responsive Glass Calculator</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      background:
+        radial-gradient(circle at top left, #4a4a4a, transparent 30%),
+        radial-gradient(circle at bottom right, #1f1f1f, transparent 30%),
+        linear-gradient(135deg, #050505, #151515, #000);
+    }
+
+    .calculator {
+      width: min(92vw, 360px);
+      padding: clamp(16px, 5vw, 24px);
+      border-radius: clamp(24px, 7vw, 36px);
+      background: rgba(20, 20, 20, 0.5);
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow:
+        0 25px 50px rgba(0, 0, 0, 0.65),
+        inset 0 1px 0 rgba(255, 255, 255, 0.12);
+    }
+
+    .display {
+      height: clamp(75px, 22vw, 100px);
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-end;
+      padding: 15px;
+      margin-bottom: 18px;
+      border-radius: 22px;
+      color: white;
+      font-size: clamp(36px, 12vw, 56px);
+      font-weight: 300;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      overflow: hidden;
+      word-break: break-all;
+    }
+
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: clamp(10px, 3vw, 14px);
+    }
+
+    button {
+      aspect-ratio: 1 / 1;
+      width: 100%;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      color: white;
+      font-size: clamp(18px, 5vw, 24px);
+      font-weight: 500;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.12),
+        inset 0 -2px 8px rgba(0, 0, 0, 0.45),
+        0 10px 18px rgba(0, 0, 0, 0.35);
+      transition: 0.2s ease;
+    }
+
+    button:hover {
+      transform: translateY(-3px);
+      background: rgba(255, 255, 255, 0.16);
+    }
+
+    button:active {
+      transform: scale(0.94);
+    }
+
+    .top {
+      background: rgba(180, 180, 180, 0.22);
+      color: #fff;
+    }
+
+    .operator,
+    .equal {
+      background: linear-gradient(180deg, #ffb347, #ff9500);
+      color: white;
+    }
+
+    .zero {
+      grid-column: span 2;
+      aspect-ratio: auto;
+      border-radius: 50px;
+      text-align: left;
+      padding-left: 28px;
+    }
+
+    @media (max-width: 380px) {
+      body {
+        padding: 12px;
+      }
+
+      .calculator {
+        width: 100%;
+      }
+
+      .display {
+        margin-bottom: 14px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="calculator">
+    <div class="display" id="display">0</div>
+
+    <div class="buttons">
+      <button class="top" onclick="clearDisplay()">AC</button>
+      <button class="top" onclick="deleteLast()">DEL</button>
+      <button class="top" onclick="append('%')">%</button>
+      <button class="operator" onclick="append('/')">/</button>
+
+      <button onclick="append('7')">7</button>
+      <button onclick="append('8')">8</button>
+      <button onclick="append('9')">9</button>
+      <button class="operator" onclick="append('*')">*</button>
+
+      <button onclick="append('4')">4</button>
+      <button onclick="append('5')">5</button>
+      <button onclick="append('6')">6</button>
+      <button class="operator" onclick="append('-')">-</button>
+
+      <button onclick="append('1')">1</button>
+      <button onclick="append('2')">2</button>
+      <button onclick="append('3')">3</button>
+      <button class="operator" onclick="append('+')">+</button>
+
+      <button class="zero" onclick="append('0')">0</button>
+      <button onclick="append('.')">.</button>
+      <button class="equal" onclick="calculate()">=</button>
+    </div>
+  </div>
+
+  <script>
+    const display = document.getElementById("display");
+
+    function append(value) {
+      if (display.innerText === "0" || display.innerText === "Error") {
+        display.innerText = value;
+      } else {
+        display.innerText += value;
+      }
+    }
+
+    function clearDisplay() {
+      display.innerText = "0";
+    }
+
+    function deleteLast() {
+      display.innerText = display.innerText.slice(0, -1) || "0";
+    }
+
+    function calculate() {
+      try {
+        display.innerText = eval(display.innerText);
+      } catch {
+        display.innerText = "Error";
+      }
+    }
+  </script>
+
+</body>
+</html>
