@@ -2,25 +2,30 @@
 
 function calculate() {
 
-    const price = document.getElementById("price").value;
-    const quantity = document.getElementById("quantity").value;
+    const priceEl = document.getElementById("price");
+    const qtyEl = document.getElementById("quantity");
+    const errEl = document.getElementById("err");
+    const payableEl = document.getElementById("payable");
+    const buttonEl = document.getElementById("button");
 
-    if (quantity <= 0) {
+    const price = Number(priceEl.value);
+    const quantity = Number(qtyEl.value);
 
-        document.getElementById("err").innerHTML = "Quantity must be greater than 0";
-        document.getElementById("payable").value = "";
-        document.getElementById("button").style.display = "none";
-
-    }
-    else {
-
-        document.getElementById("err").innerHTML = "";
-
+    // Validate quantity input
+    if (qtyEl.value === "" || !Number.isFinite(quantity)) {
+        errEl.innerHTML = "Please enter a valid quantity";
+        payableEl.value = "";
+        buttonEl.style.display = "none";
+    } else if (quantity <= 0) {
+        errEl.innerHTML = "Quantity must be greater than 0";
+        payableEl.value = "";
+        buttonEl.style.display = "none";
+    } else {
+        errEl.innerHTML = "";
         const bill = price * quantity;
-
-        document.getElementById("payable").value = bill;
-
-        document.getElementById("button").style.display = "block";
+        payableEl.value = bill;
+        buttonEl.style.display = "block";
     }
 
+    return false;
 }
