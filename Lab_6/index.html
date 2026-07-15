@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MID Lab Exam</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js"></script>
+</head>
+<body>
+
+<form onsubmit="return validateForm()">
+
+    <table id="container">
+
+        <tr>
+            <td>First Name</td>
+            <td><input type="text" id="fname"></td>
+            <td><span id="fnameError" style="color:red;"></span></td>
+        </tr>
+
+        <tr>
+            <td>Last Name</td>
+            <td><input type="text" id="lname"></td>
+            <td><span id="lnameError" style="color:red;"></span></td>
+        </tr>
+
+        <tr>
+            <td>Student ID</td>
+            <td><input type="text" id="studentId"></td>
+            <td><span id="studentIdError" style="color:red;"></span></td>
+        </tr>
+
+        <tr>
+            <td>Email</td>
+            <td><input type="email" id="email"></td>
+            <td><span id="emailError" style="color:red;"></span></td>
+        </tr>
+
+        <tr>
+            <td>Credit Completed</td>
+            <td><input type="number" id="credit"></td>
+            <td><span id="creditError" style="color:red;"></span></td>
+        </tr>
+
+        <tr>
+            <td>Department</td>
+            <td>
+                <select id="department">
+                    <option value="">Select Department</option>
+                    <option value="CSE">CSE</option>
+                    <option value="EEE">EEE</option>
+                    <option value="BBA">BBA</option>
+                    <option value="ENG">ENG</option>
+                </select>
+            </td>
+            <td><span id="departmentError" style="color:red;"></span></td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td>
+                <button type="submit">Submit</button>
+            </td>
+        </tr>
+
+    </table>
+
+</form>
+
+
+
+<div class="list-container">
+
+        <h2>Registered Student List</h2>
+
+        <table id="studentList">
+
+            <tr>
+                <td>FName</td>
+                <td>LName</td>
+                <td>Student ID</td>
+                <td>Email</td>
+                <td>Credit</td>
+                <td>Department</td>
+            </tr>
+
+        </table>
+
+    </div>
+
+
+
+</body>
+</html>
